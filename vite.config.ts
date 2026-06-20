@@ -7,6 +7,13 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  // Force-enable Nitro outside the Lovable environment and target a Node
+  // server, so the build emits a real HTTP server (dist/server/server.js)
+  // that listens on process.env.PORT. Required for hosts like Hostinger;
+  // without this, Nitro is skipped and the server never binds to a port (503).
+  nitro: {
+    preset: "node-server",
+  },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
