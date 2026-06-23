@@ -91,7 +91,10 @@ function ContactPage() {
                 <Mail className="mt-1 size-5 text-ocean" />
                 <div>
                   <div className="text-sm font-semibold">Email</div>
-                  <a href="mailto:info@magedge.com" className="text-muted-foreground hover:text-foreground">
+                  <a
+                    href="mailto:info@magedge.com"
+                    className="text-muted-foreground hover:text-foreground"
+                  >
                     info@magedge.com
                   </a>
                 </div>
@@ -100,7 +103,10 @@ function ContactPage() {
                 <Phone className="mt-1 size-5 text-ocean" />
                 <div>
                   <div className="text-sm font-semibold">Phone</div>
-                  <a href="tel:+13105551234" className="text-muted-foreground hover:text-foreground">
+                  <a
+                    href="tel:+13105551234"
+                    className="text-muted-foreground hover:text-foreground"
+                  >
                     +1 (310) 555-1234
                   </a>
                 </div>
@@ -133,7 +139,14 @@ function ContactPage() {
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" name="email" type="email" required placeholder="you@example.com" className="mt-1.5" />
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="you@example.com"
+                    className="mt-1.5"
+                  />
                 </div>
                 <div>
                   <Label htmlFor="phone">Phone</Label>
@@ -160,12 +173,19 @@ function ContactPage() {
               </div>
               <div>
                 <Label htmlFor="message">Message</Label>
-                <Textarea id="message" name="message" required rows={4} placeholder="Tell us about your property and needs" className="mt-1.5" />
+                <Textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={4}
+                  placeholder="Tell us about your property and needs"
+                  className="mt-1.5"
+                />
               </div>
               <Button
                 type="submit"
                 disabled={submitting}
-                className="w-full rounded-full bg-ocean text-white hover:bg-ocean/90"
+                className="w-full rounded-full bg-[#020112] text-white hover:bg-[#020112]/80"
               >
                 {submitting ? "Sending…" : "Send message"}
               </Button>

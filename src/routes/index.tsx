@@ -252,13 +252,7 @@ function HowItWorks() {
           </div>
         ))}
       </div>
-      <div className="mt-10 text-center">
-        <Link to="/how-it-works">
-          <Button variant="outline" className="rounded-full">
-            See the full flow <ArrowRight className="size-4" />
-          </Button>
-        </Link>
-      </div>
+      <div className="mt-10 text-center"></div>
     </section>
   );
 }
@@ -634,11 +628,7 @@ function Product() {
               </figcaption>
             </figure>
           </div>
-          <Link to="/technology" className="mt-6 inline-block">
-            <Button variant="outline" className="rounded-full">
-              View technical specs <ArrowRight className="size-4" />
-            </Button>
-          </Link>
+          <Link to="/technology" className="mt-6 inline-block"></Link>
         </div>
         <div ref={carouselRef} className="reveal-up">
           <DashboardCarousel />
@@ -1024,7 +1014,7 @@ function ContactSection() {
           <Button
             type="submit"
             disabled={submitting}
-            className="w-full rounded-full bg-ocean text-white hover:bg-ocean/90"
+            className="w-full rounded-full bg-[#020112] text-white hover:bg-[#020112]/80"
           >
             {submitting ? "Sending…" : "Send message"}
           </Button>

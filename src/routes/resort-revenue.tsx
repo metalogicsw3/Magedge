@@ -68,6 +68,7 @@ function ResortRevenuePage() {
   const [resortName, setResortName] = useState("");
   const [contactName, setContactName] = useState("");
   const [email, setEmail] = useState("");
+  const [countryCode, setCountryCode] = useState("+1");
   const [phone, setPhone] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
@@ -131,7 +132,7 @@ function ResortRevenuePage() {
           resortName,
           contactName,
           email,
-          phone,
+          phone: countryCode + phone,
           occupancy,
           feePerGuestNight,
           totalRooms: stats.totalRooms,
@@ -239,17 +240,58 @@ function ResortRevenuePage() {
                     </div>
                     <div>
                       <Label className="text-xs">Phone</Label>
-                      <Input
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        placeholder="+1 555 123 4567"
-                        maxLength={40}
-                      />
+                      <div className="mt-1 flex">
+                        <select
+                          value={countryCode}
+                          onChange={(e) => setCountryCode(e.target.value)}
+                          className="rounded-l-md rounded-r-none border border-r-0 bg-background px-2 py-2 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+                        >
+                          <option value="+1">🇺🇸 +1</option>
+                          <option value="+44">🇬🇧 +44</option>
+                          <option value="+971">🇦🇪 +971</option>
+                          <option value="+960">🇲🇻 +960</option>
+                          <option value="+66">🇹🇭 +66</option>
+                          <option value="+65">🇸🇬 +65</option>
+                          <option value="+61">🇦🇺 +61</option>
+                          <option value="+33">🇫🇷 +33</option>
+                          <option value="+49">🇩🇪 +49</option>
+                          <option value="+39">🇮🇹 +39</option>
+                          <option value="+34">🇪🇸 +34</option>
+                          <option value="+31">🇳🇱 +31</option>
+                          <option value="+41">🇨🇭 +41</option>
+                          <option value="+7">🇷🇺 +7</option>
+                          <option value="+86">🇨🇳 +86</option>
+                          <option value="+81">🇯🇵 +81</option>
+                          <option value="+82">🇰🇷 +82</option>
+                          <option value="+91">🇮🇳 +91</option>
+                          <option value="+92">🇵🇰 +92</option>
+                          <option value="+94">🇱🇰 +94</option>
+                          <option value="+62">🇮🇩 +62</option>
+                          <option value="+60">🇲🇾 +60</option>
+                          <option value="+63">🇵🇭 +63</option>
+                          <option value="+20">🇪🇬 +20</option>
+                          <option value="+27">🇿🇦 +27</option>
+                          <option value="+55">🇧🇷 +55</option>
+                          <option value="+52">🇲🇽 +52</option>
+                          <option value="+966">🇸🇦 +966</option>
+                          <option value="+974">🇶🇦 +974</option>
+                          <option value="+973">🇧🇭 +973</option>
+                          <option value="+968">🇴🇲 +968</option>
+                          <option value="+965">🇰🇼 +965</option>
+                        </select>
+                        <Input
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          placeholder="555 123 4567"
+                          maxLength={20}
+                          className="rounded-l-none"
+                        />
+                      </div>
                     </div>
                     <Button
                       type="submit"
                       disabled={sending}
-                      className="w-full bg-ocean hover:bg-ocean-deep"
+                      className="w-full bg-[#020112] text-white hover:bg-[#020112]/80"
                     >
                       {sending ? "Sending…" : "Unlock my revenue estimate"}
                     </Button>
