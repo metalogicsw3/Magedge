@@ -1024,28 +1024,28 @@ function ContactSection() {
   );
 }
 
-function FinalCTA() {
-  const ref = useReveal();
-  return (
-    <section className="relative overflow-hidden">
-      <img src={pool} alt="" className="absolute inset-0 size-full object-cover" loading="lazy" />
-      <div className="absolute inset-0 bg-ocean-deep/60" />
-      <div
-        ref={ref}
-        className="reveal-up relative z-10 mx-auto max-w-4xl px-6 py-16 text-center text-white md:py-24"
-      >
-        <ShieldCheck className="mx-auto size-10" />
-        <h2 className="mt-6 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
-          Bring faster water-safety response to your property
-        </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-white/85">
-          Book a demo, request a pilot, or talk to our team about a deployment tailored to your
-          site.
-        </p>
-      </div>
-    </section>
-  );
-}
+// function FinalCTA() {
+//   const ref = useReveal();
+//   return (
+//     <section className="relative overflow-hidden">
+//       <img src={pool} alt="" className="absolute inset-0 size-full object-cover" loading="lazy" />
+//       <div className="absolute inset-0 bg-ocean-deep/60" />
+//       <div
+//         ref={ref}
+//         className="reveal-up relative z-10 mx-auto max-w-4xl px-6 py-16 text-center text-white md:py-24"
+//       >
+//         <ShieldCheck className="mx-auto size-10" />
+//         <h2 className="mt-6 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
+//           Bring faster water-safety response to your property
+//         </h2>
+//         <p className="mx-auto mt-5 max-w-2xl text-white/85">
+//           Book a demo, request a pilot, or talk to our team about a deployment tailored to your
+//           site.
+//         </p>
+//       </div>
+//     </section>
+//   );
+// }
 
 function Index() {
   return (
@@ -1061,7 +1061,7 @@ function Index() {
         <UseCases />
         <Trust />
         <ContactSection />
-        <FinalCTA />
+        {/* <FinalCTA /> */}
       </main>
       <Footer />
       <Toaster />
