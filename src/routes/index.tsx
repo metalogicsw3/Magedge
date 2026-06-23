@@ -103,6 +103,27 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+function smoothScrollTo(id: string, duration = 1200) {
+  const target = document.getElementById(id);
+  if (!target) return;
+  const start = window.scrollY;
+  const end = target.getBoundingClientRect().top + window.scrollY - 80;
+  const distance = end - start;
+  let startTime: number | null = null;
+
+  const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2); // easeInOutCubic
+
+  const step = (timestamp: number) => {
+    if (!startTime) startTime = timestamp;
+    const elapsed = timestamp - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    window.scrollTo(0, start + distance * ease(progress));
+    if (progress < 1) requestAnimationFrame(step);
+  };
+
+  requestAnimationFrame(step);
+}
+
 function Hero() {
   return (
     <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden">
@@ -131,7 +152,7 @@ function Hero() {
           your safety team — built for resort pools, beaches, and water parks.
         </p>
         <div className="animate-hero-fade-up-delay-3 mt-7 flex flex-wrap items-center justify-center gap-3 sm:mt-9">
-          <Link to="/contact">
+          <Link to="/demo-request">
             <Button
               size="lg"
               className="rounded-full bg-white px-7 py-6 text-base text-foreground hover:bg-white/90"
@@ -139,15 +160,14 @@ function Hero() {
               Book a demo
             </Button>
           </Link>
-          <Link to="/contact">
-            <Button
-              size="lg"
-              variant="outline"
-              className="rounded-full border-white/50 bg-transparent px-7 py-6 text-base text-white hover:bg-white/10"
-            >
-              Request a pilot
-            </Button>
-          </Link>
+          <Button
+            size="lg"
+            variant="outline"
+            className="rounded-full border-white/50 bg-transparent px-7 py-6 text-base text-white hover:bg-white/10"
+            onClick={() => smoothScrollTo("contact")}
+          >
+            Talk to sales
+          </Button>
         </div>
         <p className="animate-hero-fade-up-delay-3 mt-5 text-xs text-white/70">
           A response-assist tool — designed to support, not replace, active supervision.
@@ -898,7 +918,10 @@ function ContactSection() {
   };
 
   return (
-    <section className="mx-auto grid max-w-6xl gap-8 px-6 py-14 md:gap-12 md:py-20 lg:grid-cols-2">
+    <section
+      id="contact"
+      className="mx-auto grid max-w-6xl gap-8 px-6 py-14 md:gap-12 md:py-20 lg:grid-cols-2"
+    >
       <div ref={detailsRef} className="reveal-up">
         <h2 className="text-2xl font-bold tracking-tight">Contact details</h2>
         <div className="mt-8 space-y-6">
@@ -1016,7 +1039,7 @@ function FinalCTA() {
   return (
     <section className="relative overflow-hidden">
       <img src={pool} alt="" className="absolute inset-0 size-full object-cover" loading="lazy" />
-      <div className="absolute inset-0 bg-ocean-deep/90" />
+      <div className="absolute inset-0 bg-ocean-deep/60" />
       <div
         ref={ref}
         className="reveal-up relative z-10 mx-auto max-w-4xl px-6 py-16 text-center text-white md:py-24"
@@ -1029,25 +1052,6 @@ function FinalCTA() {
           Book a demo, request a pilot, or talk to our team about a deployment tailored to your
           site.
         </p>
-        <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-          <Link to="/contact">
-            <Button
-              size="lg"
-              className="rounded-full bg-white px-7 text-foreground hover:bg-white/90"
-            >
-              Book a demo <ArrowRight className="size-4" />
-            </Button>
-          </Link>
-          <Link to="/contact">
-            <Button
-              size="lg"
-              variant="outline"
-              className="rounded-full border-white/50 bg-transparent px-7 text-white hover:bg-white/10"
-            >
-              Talk to sales
-            </Button>
-          </Link>
-        </div>
       </div>
     </section>
   );

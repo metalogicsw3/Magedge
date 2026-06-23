@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import footerBg from "@/assets/footer.jpeg";
 import magedgeLogo from "@/assets/magedge-logo.png";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function Footer() {
   return (
@@ -13,8 +15,8 @@ export function Footer() {
         className="absolute inset-0 h-full w-full object-cover"
       />
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/55" />
+      {/* Dark overlay — ocean deep tint matching FinalCTA */}
+      <div className="absolute inset-0 bg-ocean-deep/80" />
 
       {/* Centered content */}
       <div className="relative flex min-h-screen flex-col items-center justify-center px-6 text-center text-white">
@@ -29,6 +31,41 @@ export function Footer() {
         <p className="mt-4 max-w-md text-sm opacity-70 sm:mt-6 sm:text-base">
           See how our SOS wristband brings real-time drowning prevention to your resort.
         </p>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:mt-10">
+          <Link to="/demo-request">
+            <Button
+              size="lg"
+              className="rounded-full bg-white px-7 text-foreground hover:bg-white/90"
+            >
+              Book a demo <ArrowRight className="size-4" />
+            </Button>
+          </Link>
+          <Button
+            size="lg"
+            variant="outline"
+            className="rounded-full border-white/50 bg-transparent px-7 text-white hover:bg-white/10"
+            onClick={() => {
+              const target = document.getElementById("contact");
+              if (!target) return;
+              const start = window.scrollY;
+              const end = target.getBoundingClientRect().top + window.scrollY - 80;
+              const distance = end - start;
+              const duration = 1200;
+              let startTime: number | null = null;
+              const ease = (t: number) =>
+                t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+              const step = (ts: number) => {
+                if (!startTime) startTime = ts;
+                const progress = Math.min((ts - startTime) / duration, 1);
+                window.scrollTo(0, start + distance * ease(progress));
+                if (progress < 1) requestAnimationFrame(step);
+              };
+              requestAnimationFrame(step);
+            }}
+          >
+            Talk to sales
+          </Button>
+        </div>
       </div>
 
       {/* Bottom-right legal links */}
