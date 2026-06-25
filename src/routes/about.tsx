@@ -1,13 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  Target,
-  Eye,
-  HeartHandshake,
-  ArrowRight,
-  Radio,
-  MapPin,
-  MonitorSmartphone,
-} from "lucide-react";
+import { Eye, HeartHandshake, ArrowRight, Radio, MapPin, MonitorSmartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -34,11 +26,6 @@ export const Route = createFileRoute("/about")({
 });
 
 const values = [
-  {
-    icon: Target,
-    title: "Less hype, more proof",
-    text: "We're transparent about our certification status and pilot results, and we don't overstate what the product does.",
-  },
   {
     icon: Eye,
     title: "Built with operators",
@@ -142,7 +129,7 @@ function AboutPage() {
 
         <section className="mx-auto max-w-5xl px-6 py-20">
           <h2 className="text-center text-3xl font-bold tracking-tight">What we value</h2>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="mt-10 mx-auto grid max-w-2xl gap-6 md:grid-cols-2">
             {values.map((v) => (
               <div key={v.title} className="rounded-2xl border bg-card p-6 text-center">
                 <span className="mx-auto flex size-12 items-center justify-center rounded-2xl bg-ocean/10 text-ocean">

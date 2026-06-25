@@ -1065,6 +1065,82 @@ function ContactSection() {
 //   );
 // }
 
+const faqs = [
+  {
+    q: "What is the MagEdge wristband?",
+    a: "The MagEdge wristband is a waterproof, saltwater-resistant drowning prevention device with built-in SOS alerts and precise location tracking. It helps resorts keep guests safe in the water and on property.",
+  },
+  {
+    q: "How does the SOS feature work?",
+    a: "When a guest presses the SOS button, the wristband instantly sends their exact location to resort staff or lifeguards via our on-site network — no cellular network required.",
+  },
+  {
+    q: "Is the wristband comfortable for guests to wear?",
+    a: "Yes. The MagEdge wristband is lightweight, discreet, and designed for all-day comfort, making it ideal for both adults and children at resorts, beaches, and water parks.",
+  },
+  {
+    q: "Can MagEdge work in areas without cellular coverage?",
+    a: "Absolutely. Unlike traditional safety tools, our wristband uses an on-site low-power mesh network, ensuring reliable emergency communication even in remote or open-water environments.",
+  },
+  {
+    q: "How do resorts benefit from using MagEdge?",
+    a: "Resorts gain faster emergency response times, reduced liability risks, and stronger reputations for guest safety — all while giving safety teams the precise location data they need to act quickly.",
+  },
+  {
+    q: "Where can MagEdge be used besides sea resorts?",
+    a: "In addition to beaches and hotels, MagEdge is ideal for water parks, marinas, cruise lines, and any large property with water areas where staff coverage is stretched.",
+  },
+];
+
+function FAQ() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const headRef = useReveal();
+
+  return (
+    <section className="mx-auto max-w-3xl px-6 py-14 md:py-24">
+      <div ref={headRef} className="reveal-up mb-10 text-center">
+        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          Answers that bring clarity
+        </h2>
+        <p className="mt-3 text-muted-foreground">
+          The most common questions about MagEdge, answered.
+        </p>
+      </div>
+
+      <div className="divide-y divide-border rounded-2xl border bg-card">
+        {faqs.map((faq, i) => {
+          const isOpen = openIndex === i;
+          return (
+            <div key={i}>
+              <button
+                type="button"
+                onClick={() => setOpenIndex(isOpen ? null : i)}
+                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-muted/40"
+              >
+                <span className="text-sm font-semibold sm:text-base">{faq.q}</span>
+                <span
+                  className={`flex size-6 flex-shrink-0 items-center justify-center rounded-full border border-border transition-transform duration-300 ${
+                    isOpen ? "rotate-45 bg-foreground text-background" : ""
+                  }`}
+                >
+                  <Plus className="size-3.5" />
+                </span>
+              </button>
+              <div
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                }`}
+              >
+                <p className="px-6 pb-5 text-sm leading-relaxed text-muted-foreground">{faq.a}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   return (
     <div className="min-h-screen bg-background">
@@ -1078,6 +1154,7 @@ function Index() {
         <Specs />
         <UseCases />
         <Trust />
+        <FAQ />
         <ContactSection />
         {/* <FinalCTA /> */}
       </main>
