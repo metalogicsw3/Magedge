@@ -1,14 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import {
-  BellRing,
-  Radar,
-  MapPin,
-  Users,
-  WifiOff,
-  ShieldCheck,
-  ArrowRight,
-} from "lucide-react";
+import { BellRing, Radar, MapPin, Users, WifiOff, ShieldCheck, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -104,7 +96,7 @@ function HowItWorksPage() {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        <section className="relative overflow-hidden bg-ocean-deep py-24 text-white">
+        <section className="relative overflow-hidden bg-ocean-deep pt-36 pb-24 text-white">
           <div className="absolute -left-24 top-1/2 size-96 -translate-y-1/2 rounded-full bg-ocean/30 blur-3xl" />
           <div className="absolute -right-24 top-0 size-80 rounded-full bg-ocean/20 blur-3xl" />
           <div className="relative mx-auto max-w-4xl px-6 text-center">
@@ -120,9 +112,8 @@ function HowItWorksPage() {
             </Reveal>
             <Reveal delay={160}>
               <p className="mx-auto mt-5 max-w-2xl text-white/85">
-                A simple, reliable alert flow designed to get the right person to
-                the right place, faster — and to support your existing safety
-                procedures.
+                A simple, reliable alert flow designed to get the right person to the right place,
+                faster — and to support your existing safety procedures.
               </p>
             </Reveal>
           </div>
@@ -143,10 +134,9 @@ function HowItWorksPage() {
                   Built around one button that matters
                 </h2>
                 <p className="mt-4 text-muted-foreground">
-                  Spin the wristband to explore it from every angle. A rugged,
-                  waterproof module with a single, unmistakable SOS button —
-                  comfortable enough for all-day wear and tough enough for
-                  saltwater, sun and sand.
+                  Spin the wristband to explore it from every angle. A rugged, waterproof module
+                  with a single, unmistakable SOS button — comfortable enough for all-day wear and
+                  tough enough for saltwater, sun and sand.
                 </p>
                 <ul className="mt-6 space-y-3 text-sm">
                   {[
@@ -174,15 +164,11 @@ function HowItWorksPage() {
                     <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-ocean/10 text-ocean transition-colors duration-300 group-hover:bg-ocean group-hover:text-white">
                       <s.icon className="size-6" />
                     </span>
-                    {i < steps.length - 1 && (
-                      <span className="mt-2 w-px flex-1 bg-border" />
-                    )}
+                    {i < steps.length - 1 && <span className="mt-2 w-px flex-1 bg-border" />}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold text-ocean">
-                        0{i + 1}
-                      </span>
+                      <span className="text-xs font-bold text-ocean">0{i + 1}</span>
                       <h2 className="text-xl font-semibold">{s.title}</h2>
                     </div>
                     <p className="mt-2 text-muted-foreground">{s.text}</p>
@@ -198,8 +184,7 @@ function HowItWorksPage() {
                 <WifiOff className="size-6 text-ocean" />
                 <h3 className="mt-3 font-semibold">No cellular dependency</h3>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  The on-site network keeps working in areas with poor or no
-                  mobile coverage.
+                  The on-site network keeps working in areas with poor or no mobile coverage.
                 </p>
               </div>
             </Reveal>
@@ -208,8 +193,7 @@ function HowItWorksPage() {
                 <ShieldCheck className="size-6 text-ocean" />
                 <h3 className="mt-3 font-semibold">Supports your team</h3>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  MagEdge assists trained staff — it does not replace supervision
-                  or lifeguards.
+                  MagEdge assists trained staff — it does not replace supervision or lifeguards.
                 </p>
               </div>
             </Reveal>

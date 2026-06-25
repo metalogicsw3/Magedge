@@ -39,7 +39,8 @@ export const Route = createFileRoute("/onboarding")({
       { property: "og:title", content: "MagEdge Resort Onboarding" },
       {
         property: "og:description",
-        content: "A clear, staged deployment process for resort water-safety. Start with a discovery enquiry.",
+        content:
+          "A clear, staged deployment process for resort water-safety. Start with a discovery enquiry.",
       },
     ],
     links: [{ rel: "canonical", href: "/onboarding" }],
@@ -110,7 +111,9 @@ function OnboardingPage() {
           phone: String(data.get("phone") || ""),
           location: String(data.get("location") || ""),
           roomCount: data.get("roomCount") ? Number(data.get("roomCount")) : undefined,
-          expectedDevices: data.get("expectedDevices") ? Number(data.get("expectedDevices")) : undefined,
+          expectedDevices: data.get("expectedDevices")
+            ? Number(data.get("expectedDevices"))
+            : undefined,
           waterZones: String(data.get("waterZones") || ""),
           networkReadiness: String(data.get("networkReadiness") || ""),
           deploymentType,
@@ -132,7 +135,7 @@ function OnboardingPage() {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        <section className="bg-ocean-deep py-20 text-white">
+        <section className="bg-ocean-deep pt-36 pb-20 text-white">
           <div className="mx-auto max-w-4xl px-6 text-center">
             <h1 className="text-balance text-4xl font-extrabold tracking-tight sm:text-5xl">
               Resort onboarding
@@ -178,17 +181,36 @@ function OnboardingPage() {
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <Label htmlFor="resortName">Resort name</Label>
-                    <Input id="resortName" name="resortName" required placeholder="Resort / property name" className="mt-1.5" />
+                    <Input
+                      id="resortName"
+                      name="resortName"
+                      required
+                      placeholder="Resort / property name"
+                      className="mt-1.5"
+                    />
                   </div>
                   <div>
                     <Label htmlFor="contactName">Your name</Label>
-                    <Input id="contactName" name="contactName" required placeholder="Full name" className="mt-1.5" />
+                    <Input
+                      id="contactName"
+                      name="contactName"
+                      required
+                      placeholder="Full name"
+                      className="mt-1.5"
+                    />
                   </div>
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <Label htmlFor="email">Email</Label>
-                    <Input id="email" name="email" type="email" required placeholder="you@example.com" className="mt-1.5" />
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      placeholder="you@example.com"
+                      className="mt-1.5"
+                    />
                   </div>
                   <div>
                     <Label htmlFor="phone">Phone</Label>
@@ -197,16 +219,35 @@ function OnboardingPage() {
                 </div>
                 <div>
                   <Label htmlFor="location">Location (island / region / country)</Label>
-                  <Input id="location" name="location" placeholder="e.g. North Malé Atoll, Maldives" className="mt-1.5" />
+                  <Input
+                    id="location"
+                    name="location"
+                    placeholder="e.g. North Malé Atoll, Maldives"
+                    className="mt-1.5"
+                  />
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <Label htmlFor="roomCount">Room count</Label>
-                    <Input id="roomCount" name="roomCount" type="number" min={0} placeholder="e.g. 120" className="mt-1.5" />
+                    <Input
+                      id="roomCount"
+                      name="roomCount"
+                      type="number"
+                      min={0}
+                      placeholder="e.g. 120"
+                      className="mt-1.5"
+                    />
                   </div>
                   <div>
                     <Label htmlFor="expectedDevices">Expected active devices / day</Label>
-                    <Input id="expectedDevices" name="expectedDevices" type="number" min={0} placeholder="e.g. 200" className="mt-1.5" />
+                    <Input
+                      id="expectedDevices"
+                      name="expectedDevices"
+                      type="number"
+                      min={0}
+                      placeholder="e.g. 200"
+                      className="mt-1.5"
+                    />
                   </div>
                 </div>
                 <div>
@@ -222,7 +263,12 @@ function OnboardingPage() {
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <Label htmlFor="networkReadiness">Network & power readiness</Label>
-                    <Input id="networkReadiness" name="networkReadiness" placeholder="e.g. reliable Wi-Fi & mains power" className="mt-1.5" />
+                    <Input
+                      id="networkReadiness"
+                      name="networkReadiness"
+                      placeholder="e.g. reliable Wi-Fi & mains power"
+                      className="mt-1.5"
+                    />
                   </div>
                   <div>
                     <Label>Deployment type</Label>
@@ -240,14 +286,22 @@ function OnboardingPage() {
                 </div>
                 <div>
                   <Label htmlFor="message">Anything else?</Label>
-                  <Textarea id="message" name="message" rows={3} placeholder="Tell us about timelines, goals or specific concerns" className="mt-1.5" />
+                  <Textarea
+                    id="message"
+                    name="message"
+                    rows={3}
+                    placeholder="Tell us about timelines, goals or specific concerns"
+                    className="mt-1.5"
+                  />
                 </div>
                 <Button
                   type="submit"
                   disabled={submitting}
                   className="w-full rounded-full bg-ocean text-white hover:bg-ocean/90"
                 >
-                  {submitting ? "Sending…" : (
+                  {submitting ? (
+                    "Sending…"
+                  ) : (
                     <>
                       Submit discovery enquiry <ArrowRight className="size-4" />
                     </>

@@ -1,89 +1,72 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Target, Eye, HeartHandshake, ArrowRight, Radio, MapPin, MonitorSmartphone } from "lucide-react";
+import {
+  Target,
+  Eye,
+  HeartHandshake,
+  ArrowRight,
+  Radio,
+  MapPin,
+  MonitorSmartphone,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import expertTech from "@/assets/expert-tech.jpg";
-import teamMike from "@/assets/team-mike.jpg";
-import teamImran from "@/assets/team-imran.jpg";
-import teamIlham from "@/assets/team-ilham.jpg";
-import teamEemaan from "@/assets/team-eemaan.jpg";
-import teamSameed from "@/assets/team-sameed.jpg";
-import teamEddie from "@/assets/team-eddie.jpg";
-import teamHussain from "@/assets/team-hussain.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About & Team — MagEdge" },
+      { title: "About — MagEdge" },
       {
         name: "description",
         content:
           "Born out of NGA911's emergency-response and computer-aided dispatch heritage, MagEdge brings geofencing and a purpose-built operations dashboard to resort water safety.",
       },
       { property: "og:title", content: "About MagEdge" },
-      { property: "og:description", content: "Our NGA911 heritage, our technology, and the team building MagEdge." },
+      {
+        property: "og:description",
+        content: "Our NGA911 heritage, our technology, and the team building MagEdge.",
+      },
     ],
     links: [{ rel: "canonical", href: "/about" }],
   }),
   component: AboutPage,
 });
 
-const team = [
-  {
-    name: "Mike",
-    role: "Founder",
-    avatar: teamMike,
-    bio: "Founder of NGA911 emergency-response systems and computer-aided dispatch (CAD). Brings deep experience in 911-grade alerting and incident management to MagEdge.",
-  },
-  {
-    name: "Imran Ali",
-    role: "Chief Executive Officer",
-    avatar: teamImran,
-    bio: "Leads company strategy, governance and partnerships, with overall accountability for product direction and the quality management system.",
-  },
-  {
-    name: "Ilham Idris",
-    role: "Finance & Policy",
-    avatar: teamIlham,
-    bio: "Financial controls, commercial modelling and regulatory/policy expertise — keeping deployments compliant and commercially sound.",
-  },
-  {
-    name: "Eemaan Rasheed",
-    role: "Business Operations",
-    avatar: teamEemaan,
-    bio: "Runs operational coordination, documentation and resort onboarding, making sure each deployment runs smoothly end to end.",
-  },
-  {
-    name: "Sameed Afzal",
-    role: "Full-Stack & Embedded IoT",
-    avatar: teamSameed,
-    bio: "Builds the cloud platform, dashboard and the embedded wireless / IoT firmware that powers the wristbands and gateways.",
-  },
-  {
-    name: "Eddie Lau",
-    role: "Global Sales",
-    avatar: teamEddie,
-    bio: "Leads international business and strategic partnerships, working with resort groups worldwide to scale deployments.",
-  },
-  {
-    name: "Hussain Hashim",
-    role: "Resort & Hospitality",
-    avatar: teamHussain,
-    bio: "Hospitality and resort operations background, ensuring MagEdge fits the realities of running busy waterfront properties.",
-  },
-];
-
 const values = [
-  { icon: Target, title: "Less hype, more proof", text: "We're transparent about our certification status and pilot results, and we don't overstate what the product does." },
-  { icon: Eye, title: "Built with operators", text: "Every feature is shaped by feedback from real aquatics and safety teams in the field." },
-  { icon: HeartHandshake, title: "Safety first", text: "MagEdge is a response-assist tool that supports — never replaces — trained supervision." },
+  {
+    icon: Target,
+    title: "Less hype, more proof",
+    text: "We're transparent about our certification status and pilot results, and we don't overstate what the product does.",
+  },
+  {
+    icon: Eye,
+    title: "Built with operators",
+    text: "Every feature is shaped by feedback from real aquatics and safety teams in the field.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Safety first",
+    text: "MagEdge is a response-assist tool that supports — never replaces — trained supervision.",
+  },
 ];
 
 const tech = [
-  { icon: Radio, title: "911-grade alerting heritage", text: "Built on NGA911's emergency-response and computer-aided dispatch experience, applied to the water." },
-  { icon: MapPin, title: "Geofencing", text: "Define safety zones across pools, beaches and lagoons. The system flags alerts against the zone where they occur for faster, targeted dispatch." },
-  { icon: MonitorSmartphone, title: "Purpose-built dashboard", text: "A single operations dashboard surfaces live alerts, device health, signal status and location — designed for safety teams, not generic IoT consoles." },
+  {
+    icon: Radio,
+    title: "911-grade alerting heritage",
+    text: "Built on NGA911's emergency-response and computer-aided dispatch experience, applied to the water.",
+  },
+  {
+    icon: MapPin,
+    title: "Geofencing",
+    text: "Define safety zones across pools, beaches and lagoons. The system flags alerts against the zone where they occur for faster, targeted dispatch.",
+  },
+  {
+    icon: MonitorSmartphone,
+    title: "Purpose-built dashboard",
+    text: "A single operations dashboard surfaces live alerts, device health, signal status and location — designed for safety teams, not generic IoT consoles.",
+  },
 ];
 
 function AboutPage() {
@@ -91,7 +74,7 @@ function AboutPage() {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        <section className="bg-ocean-deep py-20 text-white">
+        <section className="bg-ocean-deep pt-36 pb-20 text-white">
           <div className="mx-auto max-w-4xl px-6 text-center">
             <h1 className="text-balance text-4xl font-extrabold tracking-tight sm:text-5xl">
               About MagEdge
@@ -116,11 +99,11 @@ function AboutPage() {
             <div>
               <h2 className="text-3xl font-bold tracking-tight">Our story</h2>
               <p className="mt-4 text-muted-foreground">
-                MagEdge grew out of <strong>NGA911</strong>, a next-generation emergency-response and
-                computer-aided dispatch (CAD) company. Building 911-grade alerting and dispatch
+                MagEdge grew out of <strong>NGA911</strong>, a next-generation emergency-response
+                and computer-aided dispatch (CAD) company. Building 911-grade alerting and dispatch
                 infrastructure, our team kept seeing the same gap: the moment an incident happens in
-                or around the water, the people who need to respond often don't know <em>where</em> —
-                fast enough.
+                or around the water, the people who need to respond often don't know <em>where</em>{" "}
+                — fast enough.
               </p>
               <p className="mt-4 text-muted-foreground">
                 Resort water environments are noisy, spread out and frequently lack reliable
@@ -140,7 +123,9 @@ function AboutPage() {
 
         <section className="bg-muted/40 py-20">
           <div className="mx-auto max-w-5xl px-6">
-            <h2 className="text-center text-3xl font-bold tracking-tight">What makes MagEdge different</h2>
+            <h2 className="text-center text-3xl font-bold tracking-tight">
+              What makes MagEdge different
+            </h2>
             <div className="mt-10 grid gap-6 md:grid-cols-3">
               {tech.map((t) => (
                 <div key={t.title} className="rounded-2xl border bg-card p-6">
@@ -171,33 +156,15 @@ function AboutPage() {
         </section>
 
         <section className="bg-muted/40 py-20">
-          <div className="mx-auto max-w-6xl px-6">
-            <h2 className="text-center text-3xl font-bold tracking-tight">Meet the team</h2>
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {team.map((m) => (
-                <div key={m.name} className="rounded-3xl border bg-card p-7 text-center shadow-sm">
-                  <img
-                    src={m.avatar}
-                    alt={m.name}
-                    loading="lazy"
-                    width={512}
-                    height={512}
-                    className="mx-auto size-24 rounded-full object-cover"
-                  />
-                  <h3 className="mt-4 text-lg font-semibold">{m.name}</h3>
-                  <p className="text-sm font-medium text-ocean">{m.role}</p>
-                  <p className="mt-3 text-sm text-muted-foreground">{m.bio}</p>
-                </div>
-              ))}
-            </div>
-            <p className="mx-auto mt-8 max-w-xl text-center text-sm text-muted-foreground">
-              MagEdge is operated by MagEdge, Inc. — building on the emergency-response heritage of
-              NGA911.
+          <div className="mx-auto max-w-5xl px-6 text-center">
+            <h2 className="text-3xl font-bold tracking-tight">Get in touch</h2>
+            <p className="mt-4 text-muted-foreground">
+              Interested in deploying MagEdge at your property? We'd love to hear from you.
             </p>
-            <div className="mt-8 text-center">
+            <div className="mt-8">
               <Link to="/contact">
                 <Button size="lg" className="rounded-full bg-ocean text-white hover:bg-ocean/90">
-                  Talk to our team <ArrowRight className="size-4" />
+                  Talk to us <ArrowRight className="size-4" />
                 </Button>
               </Link>
             </div>

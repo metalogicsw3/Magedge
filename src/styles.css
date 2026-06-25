@@ -157,13 +157,40 @@
 /* Hero animations */
 @keyframes hero-zoom {
   from {
-    transform: scale(1.2);
+    transform: scale(1.12);
   }
   to {
     transform: scale(1);
   }
 }
 
+/* Per-character: blurred + dropped → clear */
+@keyframes char-in {
+  from {
+    opacity: 0.001;
+    filter: blur(10px);
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0px);
+  }
+}
+
+/* Per-word: dropped → normal (no blur, like badge/subtitle) */
+@keyframes word-in {
+  from {
+    opacity: 0.001;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+/* CTA / proof block fade-up */
 @keyframes hero-fade-up {
   from {
     opacity: 0;
@@ -176,26 +203,49 @@
 }
 
 .animate-hero-zoom {
-  animation: hero-zoom 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: hero-zoom 9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
+/* Each letter in the main title */
+.hero-char {
+  opacity: 0.001;
+  animation: char-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Each word in badge / subtitle */
+.hero-word {
+  opacity: 0.001;
+  animation: word-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* CTA block */
+.hero-cta {
+  opacity: 0;
+  animation: hero-fade-up 0.7s ease-out 1.4s forwards;
+}
+
+/* Social proof */
+.hero-proof {
+  opacity: 0;
+  animation: hero-fade-up 0.7s ease-out 1.6s forwards;
+}
+
+/* Keep old classes for other pages that still use them */
 .animate-hero-fade-up {
-  animation: hero-fade-up 0.9s ease-out forwards;
+  opacity: 0;
+  animation: hero-fade-up 0.9s ease-out 0.05s forwards;
 }
-
 .animate-hero-fade-up-delay {
   opacity: 0;
-  animation: hero-fade-up 0.9s ease-out 0.25s forwards;
+  animation: hero-fade-up 0.9s ease-out 0.3s forwards;
 }
-
 .animate-hero-fade-up-delay-2 {
   opacity: 0;
-  animation: hero-fade-up 0.9s ease-out 0.45s forwards;
+  animation: hero-fade-up 0.9s ease-out 0.5s forwards;
 }
-
 .animate-hero-fade-up-delay-3 {
   opacity: 0;
-  animation: hero-fade-up 0.9s ease-out 0.65s forwards;
+  animation: hero-fade-up 0.9s ease-out 0.7s forwards;
 }
 
 /* ─── Scroll reveal ─────────────────────────────────────────────────────────
@@ -256,4 +306,17 @@
 .reveal-up.revealed,
 .reveal-stagger.revealed > * {
   will-change: auto;
+}
+
+/* ── Menu panel — single unit slides in from right edge ───────────────────── */
+/* (No separate left/right CSS needed — the whole panel is one translateX) */
+
+/* Each nav item row — stagger handled via inline transitionDelay in JSX */
+.menu-item {
+  /* base state set inline via Tailwind classes */
+}
+
+/* Link hover */
+.menu-link:hover {
+  opacity: 0.45;
 }

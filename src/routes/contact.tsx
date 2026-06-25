@@ -71,7 +71,7 @@ function ContactPage() {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        <section className="bg-ocean-deep py-20 text-white">
+        <section className="bg-ocean-deep pt-36 pb-20 text-white">
           <div className="mx-auto max-w-4xl px-6 text-center">
             <h1 className="text-balance text-4xl font-extrabold tracking-tight sm:text-5xl">
               Let's talk

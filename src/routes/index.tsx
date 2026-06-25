@@ -53,15 +53,13 @@ import {
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 
-import hero from "@/assets/hero.jpg";
+import hero from "@/assets/hero-new.jpeg";
 import deviceWristband from "@/assets/watch.png";
 import deviceGateway from "@/assets/deviceLoraWan.png";
 import geofenceResort from "@/assets/geofence-resort.jpg";
 import kidBeach from "@/assets/kid-beach.jpg";
 import lifeguard from "@/assets/lifeguard.jpg";
 import pool from "@/assets/pool.jpg";
-import avatarEmily from "@/assets/avatar-emily.jpg";
-import avatarOwen from "@/assets/avatar-owen.jpg";
 import slide1 from "@/assets/slide1.jpeg";
 import slide2 from "@/assets/slide2.jpeg";
 import slide3 from "@/assets/slide3.jpeg";
@@ -124,54 +122,108 @@ function smoothScrollTo(id: string, duration = 1200) {
   requestAnimationFrame(step);
 }
 
+function HeroLetters({
+  text,
+  baseDelay = 0,
+  className = "",
+}: {
+  text: string;
+  baseDelay?: number;
+  className?: string;
+}) {
+  return (
+    <>
+      {text.split("").map((char, i) => (
+        <span
+          key={i}
+          className={`hero-char inline-block ${className}`}
+          style={{
+            animationDelay: `${baseDelay + i * 40}ms`,
+          }}
+        >
+          {char === " " ? "\u00A0" : char}
+        </span>
+      ))}
+    </>
+  );
+}
+
+function HeroBadgeWords({ text, baseDelay = 0 }: { text: string; baseDelay?: number }) {
+  return (
+    <>
+      {text.split(" ").map((word, i) => (
+        <span
+          key={i}
+          className="hero-word inline-block"
+          style={{ animationDelay: `${baseDelay + i * 80}ms` }}
+        >
+          {word}
+          {i < text.split(" ").length - 1 ? "\u00A0" : ""}
+        </span>
+      ))}
+    </>
+  );
+}
+
 function Hero() {
   return (
-    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden">
-      {/* Background image with Ken Burns slow zoom */}
+    <section className="relative flex min-h-screen w-full overflow-hidden">
+      {/* Background — slow Ken Burns zoom */}
       <img
         src={hero}
-        alt="Aerial view of a resort beach and pool area"
+        alt="Aerial view of a luxury Maldives resort — MagEdge water safety system"
         width={1920}
         height={1080}
         fetchPriority="high"
         decoding="async"
         className="absolute inset-0 size-full object-cover animate-hero-zoom"
       />
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-ocean-deep/80 via-ocean-deep/55 to-ocean-deep/80" />
-      {/* Content — staggered fade-up entrance */}
-      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 py-20 text-center text-white sm:py-36">
-        <span className="animate-hero-fade-up mb-4 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-xs font-medium uppercase tracking-widest">
-          <Waves className="size-3.5" /> Water-safety alert wearable
-        </span>
-        <h1 className="animate-hero-fade-up-delay text-balance text-3xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">
-          Help your team respond faster when every second counts.
+      {/* Dark gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-ocean-deep/75 via-ocean-deep/50 to-ocean-deep/75" />
+
+      {/* ── Centred content ── */}
+      <div
+        className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center justify-center px-6 text-center text-white"
+        style={{ minHeight: "100svh" }}
+      >
+        {/* Badge pill — waves icon + label */}
+        <div className="animate-hero-fade-up mb-6 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-xs font-medium uppercase tracking-widest backdrop-blur-sm">
+          <Waves className="size-3.5 shrink-0" />
+          Water-safety alert wearable
+        </div>
+
+        {/* Main headline — per-letter blur-drop */}
+        <h1 className="mb-6 max-w-4xl text-4xl font-extrabold leading-[1.06] tracking-tight sm:text-5xl md:text-6xl">
+          <HeroLetters
+            text="Help your team respond faster when every second counts."
+            baseDelay={200}
+          />
         </h1>
-        <p className="animate-hero-fade-up-delay-2 mt-4 max-w-2xl text-base text-white/85 sm:mt-6 sm:text-lg">
+
+        {/* Subtitle */}
+        <p className="animate-hero-fade-up-delay mb-10 max-w-xl text-base text-white/80 sm:text-lg">
           MagEdge is a waterproof alert wristband. One press sends an SOS with precise location to
           your safety team — built for resort pools, beaches, and water parks.
         </p>
-        <div className="animate-hero-fade-up-delay-3 mt-7 flex flex-wrap items-center justify-center gap-3 sm:mt-9">
+
+        {/* Two pill CTAs */}
+        <div className="hero-cta flex flex-wrap items-center justify-center gap-3">
           <Link to="/demo-request">
-            <Button
-              size="lg"
-              className="rounded-full bg-white px-7 py-6 text-base text-foreground hover:bg-white/90"
+            <button
+              type="button"
+              className="rounded-full bg-white px-7 py-3 text-sm font-semibold text-black shadow-md transition-opacity hover:opacity-90"
             >
               Book a demo
-            </Button>
+            </button>
           </Link>
-          <Button
-            size="lg"
-            variant="outline"
-            className="rounded-full border-white/50 bg-transparent px-7 py-6 text-base text-white hover:bg-white/10"
+          <button
+            type="button"
             onClick={() => smoothScrollTo("contact")}
+            className="rounded-full border border-white/50 bg-transparent px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
           >
             Talk to sales
-          </Button>
+          </button>
         </div>
-        <p className="animate-hero-fade-up-delay-3 mt-5 text-xs text-white/70">
-          A response-assist tool — designed to support, not replace, active supervision.
-        </p>
       </div>
     </section>
   );
@@ -531,7 +583,7 @@ function DashboardCarousel() {
           <CarouselItem>
             <img
               src={slide1}
-              alt="MagEdge slide 1"
+              alt="MagEdge Ops dashboard — incident management and live alerts interface"
               className="w-full rounded-3xl object-cover"
               style={{ aspectRatio: "4/3" }}
             />
@@ -541,7 +593,7 @@ function DashboardCarousel() {
           <CarouselItem>
             <img
               src={slide2}
-              alt="MagEdge slide 2"
+              alt="MagEdge Ops dashboard — patrol agents and device status overview"
               className="w-full rounded-3xl object-cover"
               style={{ aspectRatio: "4/3" }}
             />
@@ -551,7 +603,7 @@ function DashboardCarousel() {
           <CarouselItem>
             <img
               src={slide3}
-              alt="MagEdge slide 3"
+              alt="MagEdge Ops dashboard — live map with geofenced safe swim zones and SOS tracking"
               className="w-full rounded-3xl object-cover"
               style={{ aspectRatio: "4/3" }}
             />
@@ -617,7 +669,7 @@ function Product() {
             <figure>
               <img
                 src={deviceGateway}
-                alt="MagEdge weatherproof gateway mounted at a resort"
+                alt="MagEdge LoRaWAN gateway installed at a resort rooftop for on-site mesh network coverage"
                 loading="lazy"
                 width={1024}
                 height={1024}
@@ -767,7 +819,7 @@ function UseCases() {
             <article key={u.title} className="overflow-hidden rounded-3xl border bg-card shadow-sm">
               <img
                 src={u.img}
-                alt={u.title}
+                alt={`MagEdge water safety system deployed at ${u.title.toLowerCase()}`}
                 loading="lazy"
                 width={400}
                 height={250}
@@ -834,40 +886,6 @@ function Trust() {
           </div>
         ))}
       </div>
-
-      <div ref={quotesRef} className="reveal-stagger mt-14 grid gap-6 md:grid-cols-2">
-        {[
-          {
-            quote:
-              "During our pilot, the location alerts helped our team reach the right spot noticeably faster than radio calls alone.",
-            name: "Emily Mayer",
-            role: "Resort Operations Manager (Pilot Partner)",
-            avatar: avatarEmily,
-          },
-          {
-            quote:
-              "Setup was straightforward and our staff picked up the dashboard quickly. It fits into how we already work.",
-            name: "Owen Jones",
-            role: "Aquatics Supervisor (Pilot Partner)",
-            avatar: avatarOwen,
-          },
-        ].map((t) => (
-          <figure key={t.name} className="rounded-3xl border bg-card p-5 shadow-sm md:p-8">
-            <blockquote className="text-lg font-medium leading-relaxed">“{t.quote}”</blockquote>
-            <figcaption className="mt-6 flex items-center gap-3">
-              <img src={t.avatar} alt={t.name} className="size-11 rounded-full object-cover" />
-              <div>
-                <div className="font-semibold">{t.name}</div>
-                <div className="text-sm text-muted-foreground">{t.role}</div>
-              </div>
-            </figcaption>
-          </figure>
-        ))}
-      </div>
-      <p className="mx-auto mt-8 max-w-2xl text-center text-xs text-muted-foreground">
-        Testimonials reflect feedback from pilot programs. Results vary by site, staffing, and
-        conditions.
-      </p>
     </section>
   );
 }

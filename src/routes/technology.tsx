@@ -23,7 +23,10 @@ export const Route = createFileRoute("/technology")({
           "MagEdge technical specifications: battery life, IP68 water resistance, on-site coverage, charging, connectivity, and one-press SOS alerts.",
       },
       { property: "og:title", content: "MagEdge Technology & Specs" },
-      { property: "og:description", content: "Battery, water resistance, coverage, charging, connectivity, and alerts." },
+      {
+        property: "og:description",
+        content: "Battery, water resistance, coverage, charging, connectivity, and alerts.",
+      },
     ],
     links: [{ rel: "canonical", href: "/technology" }],
   }),
@@ -31,12 +34,42 @@ export const Route = createFileRoute("/technology")({
 });
 
 const specs = [
-  { icon: BatteryCharging, label: "Battery life", value: "Up to 7 days per charge", detail: "Continuous standby with periodic network check-in." },
-  { icon: Droplets, label: "Water resistance", value: "IP68, saltwater-tested", detail: "Designed for immersion in pool and ocean conditions." },
-  { icon: Radar, label: "Coverage", value: "On-site mesh network", detail: "Site-wide coverage configured per property layout." },
-  { icon: BellRing, label: "Alert method", value: "One-press SOS", detail: "Single dedicated button broadcasts to the staff dashboard." },
-  { icon: WifiOff, label: "Connectivity", value: "No cellular required", detail: "Operates independently of mobile networks and guest phones." },
-  { icon: Clock, label: "Charging", value: "Magnetic dock", detail: "Approximately 2 hours for a full charge; multi-bay docks available." },
+  {
+    icon: BatteryCharging,
+    label: "Battery life",
+    value: "Up to 7 days per charge",
+    detail: "Continuous standby with periodic network check-in.",
+  },
+  {
+    icon: Droplets,
+    label: "Water resistance",
+    value: "IP68, saltwater-tested",
+    detail: "Designed for immersion in pool and ocean conditions.",
+  },
+  {
+    icon: Radar,
+    label: "Coverage",
+    value: "On-site mesh network",
+    detail: "Site-wide coverage configured per property layout.",
+  },
+  {
+    icon: BellRing,
+    label: "Alert method",
+    value: "One-press SOS",
+    detail: "Single dedicated button broadcasts to the staff dashboard.",
+  },
+  {
+    icon: WifiOff,
+    label: "Connectivity",
+    value: "No cellular required",
+    detail: "Operates independently of mobile networks and guest phones.",
+  },
+  {
+    icon: Clock,
+    label: "Charging",
+    value: "Magnetic dock",
+    detail: "Approximately 2 hours for a full charge; multi-bay docks available.",
+  },
 ];
 
 function TechnologyPage() {
@@ -44,7 +77,7 @@ function TechnologyPage() {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        <section className="bg-ocean-deep py-20 text-white">
+        <section className="bg-ocean-deep pt-36 pb-20 text-white">
           <div className="mx-auto max-w-4xl px-6 text-center">
             <h1 className="text-balance text-4xl font-extrabold tracking-tight sm:text-5xl">
               Technology &amp; specifications
@@ -79,7 +112,8 @@ function TechnologyPage() {
               <h2 className="text-3xl font-bold tracking-tight">The operations dashboard</h2>
               <p className="mt-4 text-muted-foreground">
                 Monitor active alerts, device battery, and signal status from one screen. Configure
-                response zones, assign staff, and review response history for continuous improvement.
+                response zones, assign staff, and review response history for continuous
+                improvement.
               </p>
               <Link to="/contact" className="mt-6 inline-block">
                 <Button className="rounded-full bg-ocean text-white hover:bg-ocean/90">
