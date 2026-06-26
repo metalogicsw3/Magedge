@@ -60,6 +60,13 @@ import geofenceResort from "@/assets/geofence-resort.jpg";
 import kidBeach from "@/assets/kid-beach.jpg";
 import lifeguard from "@/assets/lifeguard.jpg";
 import pool from "@/assets/pool.jpg";
+import expertTech from "@/assets/expert-tech.jpg";
+import expertItem2 from "@/assets/expert item 2.jpeg";
+import expertItem3 from "@/assets/expert item 3.jpg";
+import expertItem4 from "@/assets/expert item 4.jpg";
+import expertItem5 from "@/assets/expert item 5.jpg";
+import expertItem6 from "@/assets/expert item 6.jpg";
+import faqsImage from "@/assets/FAQs.jpeg";
 import slide1 from "@/assets/slide1.jpeg";
 import slide2 from "@/assets/slide2.jpeg";
 import slide3 from "@/assets/slide3.jpeg";
@@ -178,8 +185,8 @@ function Hero() {
         decoding="async"
         className="absolute inset-0 size-full object-cover animate-hero-zoom"
       />
-      {/* Dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-ocean-deep/75 via-ocean-deep/50 to-ocean-deep/75" />
+      {/* Overlay — flat 40% black, same as old site */}
+      <div className="absolute inset-0 bg-black/20" />
 
       {/* ── Centred content ── */}
       <div
@@ -203,7 +210,7 @@ function Hero() {
         {/* Subtitle */}
         <p className="animate-hero-fade-up-delay mb-10 max-w-xl text-base text-white/80 sm:text-lg">
           MagEdge is a waterproof alert wristband. One press sends an SOS with precise location to
-          your safety team — built for resort pools, beaches, and water parks.
+          your safety team - built for resort pools, beaches, and water parks.
         </p>
 
         {/* Two pill CTAs */}
@@ -1065,6 +1072,139 @@ function ContactSection() {
 //   );
 // }
 
+const expertiseItems = [
+  {
+    num: "01",
+    img: expertTech,
+    subtitle: "Born from NGA911",
+    title: "Rooted in 911-Grade Dispatch Heritage",
+    text: "MagEdge grew out of NGA911's next-generation emergency-response and computer-aided dispatch expertise — bringing 911-grade alerting, dispatch thinking, and precise location to the water.",
+  },
+  {
+    num: "02",
+    img: expertItem2,
+    subtitle: "Public Safety Experts",
+    title: "Leaders in Public Safety Solutions",
+    text: "We specialise in lifesaving technologies that help resorts, coastlines, and adventure destinations protect their guests with confidence.",
+  },
+  {
+    num: "03",
+    img: expertItem3,
+    subtitle: "Innovative Tech That Saves Lives",
+    title: "Innovative Emergency Technology",
+    text: "First to market with a wristband that combines precise location and an SOS button — reliable even where cellular networks fail.",
+  },
+  {
+    num: "04",
+    img: expertItem4,
+    subtitle: "Resort-Proven Reliability",
+    title: "Proven in Critical Environments",
+    text: "Our waterproof, saltwater-resistant devices are designed for extreme conditions, from seaside resorts to water parks.",
+  },
+  {
+    num: "05",
+    img: expertItem5,
+    subtitle: "Easy Staff Integration",
+    title: "Seamless Resort Integration",
+    text: "Simple to deploy, easy for staff to monitor, and fully customisable for different property sizes and safety protocols.",
+  },
+  {
+    num: "06",
+    img: expertItem6,
+    subtitle: "Saving Lives First",
+    title: "Driven by a Life-Saving Mission",
+    text: "With thousands of drowning deaths worldwide each year, our focus is on reliable, real-time technology that helps teams respond faster.",
+  },
+];
+
+function Expertise() {
+  const headRef = useReveal();
+  const listRef = useReveal();
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  return (
+    <section className="bg-ocean-deep py-14 text-white md:py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        {/* Section header */}
+        <div ref={headRef} className="reveal-up mb-12">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Our expertise</h2>
+          <p className="mt-4 max-w-2xl text-sm text-white/55">
+            At MagEdge, we deliver innovative public safety solutions that save lives. Our drowning
+            prevention wristband works without cellular networks, ensuring reliable protection at
+            resorts, marinas, and water parks. Built for extreme conditions and easy to integrate —
+            our mission is helping people when every second counts.
+          </p>
+        </div>
+
+        {/* Accordion rows */}
+        <div ref={listRef} className="reveal-stagger divide-y divide-white/10">
+          {expertiseItems.map((item, i) => {
+            const isOpen = openIndex === i;
+            return (
+              <div key={item.num}>
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(isOpen ? null : i)}
+                  className="flex w-full items-start gap-5 py-6 text-left md:gap-8"
+                >
+                  {/* Number */}
+                  <span className="mt-2 w-7 shrink-0 text-sm font-semibold text-white/35">
+                    {item.num}
+                  </span>
+
+                  {/* Thumbnail — grows when open */}
+                  <div
+                    className={`shrink-0 overflow-hidden rounded-xl transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                      isOpen ? "w-40 md:w-56 lg:w-64" : "w-24 md:w-36"
+                    }`}
+                  >
+                    <img
+                      src={item.img}
+                      alt={item.subtitle}
+                      loading="lazy"
+                      className="aspect-[4/3] w-full object-cover"
+                    />
+                  </div>
+
+                  {/* Text block */}
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg font-bold leading-snug text-white sm:text-xl md:text-2xl">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1 text-sm text-white/45">{item.subtitle}</p>
+
+                    {/* Description — appears below subtitle when open */}
+                    <div
+                      className={`grid transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                        isOpen
+                          ? "grid-rows-[1fr] opacity-100 mt-4"
+                          : "grid-rows-[0fr] opacity-0 mt-0"
+                      }`}
+                    >
+                      <div className="min-h-0 overflow-hidden">
+                        <p className="text-sm leading-relaxed text-white/60">{item.text}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* +/× indicator */}
+                  <span
+                    className={`mt-1 flex size-8 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+                      isOpen ? "rotate-45 border-white/60 bg-white/10" : "border-white/20"
+                    }`}
+                  >
+                    <Plus className="size-3.5 text-white" />
+                  </span>
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const faqs = [
   {
     q: "What is the MagEdge wristband?",
@@ -1094,48 +1234,75 @@ const faqs = [
 
 function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const headRef = useReveal();
+  const sectionRef = useReveal();
 
   return (
-    <section className="mx-auto max-w-3xl px-6 py-14 md:py-24">
-      <div ref={headRef} className="reveal-up mb-10 text-center">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Answers that bring clarity
-        </h2>
-        <p className="mt-3 text-muted-foreground">
-          The most common questions about MagEdge, answered.
-        </p>
-      </div>
+    <section className="bg-slate-50 py-14 md:py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        {/* Two-column layout: accordions left, image right */}
+        <div className="grid gap-12 md:grid-cols-[1fr_380px] md:items-stretch lg:grid-cols-[1fr_440px]">
+          {/* Left — heading + accordion */}
+          <div ref={sectionRef} className="reveal-up">
+            <h2 className="mb-2 text-3xl font-bold tracking-tight sm:text-4xl">
+              Answers that bring clarity
+            </h2>
+            <p className="mb-8 text-sm text-foreground/50">
+              We've answered the most common questions to help you move forward.
+            </p>
 
-      <div className="divide-y divide-border rounded-2xl border bg-card">
-        {faqs.map((faq, i) => {
-          const isOpen = openIndex === i;
-          return (
-            <div key={i}>
-              <button
-                type="button"
-                onClick={() => setOpenIndex(isOpen ? null : i)}
-                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-muted/40"
-              >
-                <span className="text-sm font-semibold sm:text-base">{faq.q}</span>
-                <span
-                  className={`flex size-6 flex-shrink-0 items-center justify-center rounded-full border border-border transition-transform duration-300 ${
-                    isOpen ? "rotate-45 bg-foreground text-background" : ""
-                  }`}
-                >
-                  <Plus className="size-3.5" />
-                </span>
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                }`}
-              >
-                <p className="px-6 pb-5 text-sm leading-relaxed text-muted-foreground">{faq.a}</p>
-              </div>
+            <div className="divide-y divide-border rounded-2xl border border-border overflow-hidden bg-white shadow-sm">
+              {faqs.map((faq, i) => {
+                const isOpen = openIndex === i;
+                return (
+                  <div
+                    key={i}
+                    className={`transition-colors duration-200 ${isOpen ? "bg-slate-50" : "hover:bg-slate-50/60"}`}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setOpenIndex(isOpen ? null : i)}
+                      className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+                    >
+                      <span className="text-sm font-semibold text-foreground sm:text-base">
+                        {faq.q}
+                      </span>
+                      <span
+                        className={`flex size-7 flex-shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+                          isOpen
+                            ? "rotate-45 border-foreground/40 bg-foreground/8"
+                            : "border-border"
+                        }`}
+                      >
+                        <Plus className="size-3.5 text-foreground" />
+                      </span>
+                    </button>
+                    <div
+                      className={`grid transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                        isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                      }`}
+                    >
+                      <div className="min-h-0 overflow-hidden">
+                        <p className="px-6 pb-5 text-sm leading-relaxed text-muted-foreground">
+                          {faq.a}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-          );
-        })}
+          </div>
+
+          {/* Right — image matches left column height */}
+          <div className="hidden overflow-hidden rounded-3xl md:block h-full">
+            <img
+              src={faqsImage}
+              alt="MagEdge water safety in action"
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -1154,6 +1321,7 @@ function Index() {
         <Specs />
         <UseCases />
         <Trust />
+        <Expertise />
         <FAQ />
         <ContactSection />
         {/* <FinalCTA /> */}

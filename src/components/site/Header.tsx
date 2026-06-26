@@ -215,7 +215,7 @@ export function Header() {
             }`}
             style={{ transitionDelay: open ? "420ms" : "0ms" }}
           >
-            <p className="text-xs text-black/30">© 2025. All rights reserved</p>
+            <p className="text-xs text-black/30">© All rights reserved</p>
           </div>
         </div>
       </div>
